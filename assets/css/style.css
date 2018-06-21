@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    background-image: url("https://images6.alphacoders.com/613/613328.jpg");
+    background-size: 100%;
+}
+
+header {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 60px;
+    text-shadow: 4px 4px hotpink;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    clear: both;
+    margin: 40px;
+}
+
+
+/* Gives word box opaque background */
+.box {
+    clear: both;
+    position: static;
+    top: 500px;
+    border: 2px solid black;
+    width: 700px;
+    height: 500px;
+    margin: auto;
+    padding: 100px 0;
+    background-color: #ffffff;
+    border: 5px solid black;
+    opacity: 0.8; 
+
+}
+
+/* content box formating */
+.content {
+    margin: 30px;
+    background-color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+} 
+
+.p1 {
+    font-size: 25px;
+    
+    padding: 10px;
+}
+
+.p2 {
+    font-size: 20px;
+    padding: 5px;
+}
