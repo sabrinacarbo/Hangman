@@ -34,9 +34,9 @@ var words = ["Galaxy", "Planet", "Spaceship", "Force", "Lightsaber", "Jedi", "Pa
 // document.onkeyup = function () {
 
     document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById("#winCounter").innerHTML(win);
-        document.getElementById("#remGuess").innerHTML(guessLeft);
-        document.getElementById("#ltrGuess").innerHTML(guessed);
+        document.getElementById("winCounter").innerHTML = win;
+        document.getElementById("remGuess").innerHTML = guessLeft;
+        document.getElementById("ltrGuess").innerHTML = guessed;
      });
 
     // // Randomly chooses a choice from the Words array. 
@@ -68,6 +68,7 @@ var words = ["Galaxy", "Planet", "Spaceship", "Force", "Lightsaber", "Jedi", "Pa
         answerSpaces [j]= wordChoice.charAt(j);
         
     }
+    document.getElementById("currWord").innerHTML = answerSpaces;
     console.log(answerSpaces);
 
 
@@ -101,36 +102,6 @@ var words = ["Galaxy", "Planet", "Spaceship", "Force", "Lightsaber", "Jedi", "Pa
 
     //if the letter pressed is NOT in the word, the letter is added to the Guessed List and Guesses Remaining goes down
 
-// //**** How to get html linked??????
-//     var html =
-
-//         "<div>" +
-//         "<div>" +
-
-//             "<p>Press any key to get started!</p>" +
-
-//             "<p>Wins</p>" +
-
-//             // Counter for wins
-//             "<p>" + wins + "</p>" +
-
-//             "<p>Current Word</p>" +
-
-//             // Where word populates
-//             "<p>" + wordChoice + "</p>" +
-
-//             "<p>Number of guesses remaining</p>" +
-
-//             // Number of guesses left
-//             "<p>" + guessLeft + "</p>" +
-
-//             "<p>Letters already guessed</p>" +
-
-//             // List of letters guessed ****Still need
-//             "<p>{Guessed letters here}</p>" +
-
-//         "</div>"
-//         "</div>"
 
 // **Unsure if I need this or not?
 
