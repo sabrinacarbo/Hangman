@@ -10,44 +10,49 @@
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 </head>
 
-
-<!-- onload="loadScreen ()" -->
 <body>
 
-  <header>Word Guess Game</header>
-
-
-
+    <header>Word Guess Game</header>
 
     <div class="box">
         <div class="content">
             <p class="p1">Press any key to get started!</p>
+
+            <br>
+            <br>
 
             <p class="p2">Total Wins:</p>
 
             <!-- Counter for wins -->
             <p id="winCounter" class="p2">Win</p>
 
+            <br>
+            <br>
+
             <p class="p2">Current Word:</p>
 
             <!-- Where word populates -->
             <p id="currWord" class="p2"></p>
 
+            <br>
+            <br>
+
             <p class="p2">Number of guesses remaining:</p>
 
             <!-- Number of guesses left -->
-            <p id="remGuess"class="p2"></p>
+            <p id="remGuess" class="p2"></p>
+
+            <br>
+            <br>
 
             <p class="p2">Letters already guessed:</p>
 
+            <div>
             <!-- List of letters guessed -->
-           <p id="ltrGuess" class="p2">{Guessed letters here}</p>
+            <p id="ltrGuess" class="p2">{Guessed letters here}</p>
+            </div>
         </div>
-    </div> 
-
-
-
-
+    </div>
 
     <script text="text/javascript" src="assets/js/game.js"></script>
 

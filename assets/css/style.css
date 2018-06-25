@@ -2,10 +2,10 @@
     box-sizing: border-box;
   }
 
-/* body {
+body {
     background-image: url("https://images6.alphacoders.com/613/613328.jpg");
     background-size: 100%;
-}   */
+} 
 
 header {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -28,7 +28,7 @@ header {
     width: 700px;
     height: 500px;
     margin: auto;
-    padding: 100px 0;
+    padding: 20px 0;
     background-color: #ffffff;
     border: 5px solid black;
     opacity: 0.8; 
@@ -37,7 +37,6 @@ header {
 
 /* content box formating */
 .content {
-    margin: 30px;
     background-color: #ffffff;
     font-weight: bold;
     text-align: center;
@@ -45,7 +44,6 @@ header {
 
 .p1 {
     font-size: 25px;
-    
     padding: 10px;
 }
 

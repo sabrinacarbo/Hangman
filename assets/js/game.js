@@ -1,113 +1,106 @@
-//pre-defined word shows up in window (array)
-
-//User presses key (event - onkeyup/event.key)
-
-//Compare key selected to word/letters (ifElse)
-
-
 //variables that will reset 
 var win = 0
 var guessLeft = 10
 var guessed = 0
 
-//*** NEED TO ADJUST
-// document.addEventListener('DOMContentLoaded', function() {
-//     document.getElementById("#winCounter").innerHTML(win);
-//  });
-
-//  document.addEventListener('DOMContentLoaded', function() {
-//     document.getElementById("#remGuess").innerHTML(guessLeft);
-//  });
-
-//  document.addEventListener('DOMContentLoaded', function() {
-//     document.getElementById("#ltrGuess").innerHTML(guessed);
-//  });
-
 //Word array
-var words = ["Galaxy", "Planet", "Spaceship", "Force", "Lightsaber", "Jedi", "Padawan", "Yoda", "Sith", "Anakin", "Obi-Wan", "Grievous", "Clones", "Trooper", "Galactic", "Empire", "Darth", "Vader", "Death Star", "Stormtrooper", "Rebels", "Alliance", "Luke", "Skywalker", "Princess Leia", "Han Solo", "Millennium", "Falcon", "Wookie", "Chewbacca", "Droid", "TIE Fighter", "Destroyer", "Ewok", "Order", "Resistance"];
+var wordPool = ["Galaxy", "Planet", "Spaceship", "Force", "Lightsaber", "Jedi", "Padawan", "Yoda", "Sith", "Anakin", "Obi-Wan", "Grievous", "Clones", "Trooper", "Galactic", "Empire", "Darth", "Vader", "Death Star", "Stormtrooper", "Rebels", "Alliance", "Luke", "Skywalker", "Princess Leia", "Han Solo", "Millennium", "Falcon", "Wookie", "Chewbacca", "Droid", "TIE Fighter", "Destroyer", "Ewok", "Order", "Resistance"];
+var letterPool = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "_"];
 
 
+// This function is run whenever the DOM is loaded in the browser 
 
-// This function is run whenever the user presses a key to start.
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById("winCounter").innerHTML = win;
+    document.getElementById("remGuess").innerHTML = guessLeft;
+    document.getElementById("ltrGuess").innerHTML = guessed;
+});
 
-// document.onKeyup = function() {
-// document.onkeyup = function () {
+// Randomly chooses a choice from the Words array. 
 
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById("winCounter").innerHTML = win;
-        document.getElementById("remGuess").innerHTML = guessLeft;
-        document.getElementById("ltrGuess").innerHTML = guessed;
-     });
+var wordChoice = wordPool[Math.floor(Math.random() * wordPool.length)];
 
-    // // Randomly chooses a choice from the Words array. 
-
-    var wordChoice = words[Math.floor(Math.random() * words.length)];
-    
-    console.log(wordChoice);
+console.log(wordChoice);
 
 
-    //Makes an array from the random word generated
-    var answer = [];
+//Makes an array to hold the random word generated
 
-    for (var i = 0; i < wordChoice.length; i++){
-        answer[i]= "_";
+var answer = [];
+
+//Replaces letters within the string to underscores
+
+for (var i = 0; i < wordChoice.length; i++) {
+    answer[i] = "_ ";
+}
+
+//Displays the underscores in the browser through the HTML id=currWord
+
+document.getElementById("currWord").innerHTML = answer;
+
+
+//Counts the number of spaces left within the random word generated
+var spacesLeft = wordChoice.length;
+
+console.log(spacesLeft)
+console.log(answer);
+
+
+//Counts the number of spaces within the random word **HOW TO EXCLUDE SPACES FOR TWO WORDS
+var answerSpaces = [];
+
+for (var j = 0; j < wordChoice.length; j++) {
+    answerSpaces[j] = wordChoice.charAt(j);
+
+}
+// console.log(answerSpaces);
+
+
+//Activates an event listener for when a key is pressed
+document.onkeydown = function (event) {
+
+    //Determines a key was pressed and the value
+    var keyPress = event.key;
+
+    console.log(keyPress);
+
+
+    //if the letter pressed is a-z
+    if ((keyPress === "a") || (keyPress === "b") || (keyPress === "c") || (keyPress === "d") || (keyPress === "e") || (keyPress === "f") || (keyPress === "g") || (keyPress === "h") || (keyPress === "i") || (keyPress === "j") || (keyPress === "k") || (keyPress === "l") || (keyPress === "m") || (keyPress === "n") || (keyPress === "o") || (keyPress === "p") || (keyPress === "q") || (keyPress === "r") || (keyPress === "s") || (keyPress === "t") || (keyPress === "u") || (keyPress === "v") || (keyPress === "w") || (keyPress === "x") || (keyPress === "y") || (keyPress === "z")) {
+
+        var guessedLtrs = keyPress;  //****** NEED TO FIX
+
+        //NEED FOR LOOP TO CHECK WORK****
+
+        document.getElementById("currWord").innerHTML = keyPress;
+    } else {
+        document.getElementById("ltrGuess").appendChild = keyPress;
     }
-        
+    // 
 
-    //Counts the number of spaces left within the random word generated
-    var spacesLeft = wordChoice.length;
+    //Create a for loop to check keys against answer 
 
-    console.log(spacesLeft)
-    console.log(answer);
+    // for (var k = 0; k < wordChoice.length; k++) {
 
-
-    //Counts the number of spaces within the random word **HOW TO EXCLUDE SPACES
-    var answerSpaces = [];
-
-    for (var j = 0; j < wordChoice.length; j++){
-        answerSpaces [j]= wordChoice.charAt(j);
-        
-    }
-    document.getElementById("currWord").innerHTML = answerSpaces;
-    console.log(answerSpaces);
+    //     //Create variable to store letters pressed 
+    //     var guessedLtrs = function (){
 
 
-    
+    //     }
 
-    //tell it where to populate word
+    //     //Store letter in id="currWord" ***???
+    //     document.getElementById("ltrGuessed").appendChild(guessedLtrs);
 
+    //     //Set guessedLetters to capture letters pressed from letterPool***????
+    //     guessedLtrs.text = (letterPool[i]);
 
-    //make word underline/placeholders
-
-
-
-    // //if the letter pressed is on the keyboard
-    // if ((keyPress === "a") || (keyPress === "b") || (keyPress === "c") || (keyPress === "d") || (keyPress === "e") || (keyPress === "f") || (keyPress === "g") || (keyPress === "h") || (keyPress === "i") || (keyPress === "j") || (keyPress === "k") || (keyPress === "l") || (keyPress === "m") || (keyPress === "n") || (keyPress === "o") || (keyPress === "p") || (keyPress === "q") || (keyPress === "r") || (keyPress === "s") || (keyPress === "t") || (keyPress === "u") || (keyPress === "v") || (keyPress === "w") || (keyPress === "x") || (keyPress === "y") || (keyPress === "z")) {
-
-    // console.log("Random word: " + wordChoice);
-    // }
-    // }
-
-    // This function is run whenever the user presses a key.
-    // document.onKeyup = function(event) {
-
-    // // Determines which key was pressed.
-    //     var keyPress = event.key;
-
-    // //if the letter pressed is in the word, the letter is added to the Current Word
-    // if ((keyPress === "a") || (keyPress === "b") || (keyPress === "c") || (keyPress === "d") || (keyPress === "e") || (keyPress === "f") || (keyPress === "g") || (keyPress === "h") || (keyPress === "i") || (keyPress === "j") || (keyPress === "k") || (keyPress === "l") || (keyPress === "m") || (keyPress === "n") || (keyPress === "o") || (keyPress === "p") || (keyPress === "q") || (keyPress === "r") || (keyPress === "s") || (keyPress === "t") || (keyPress === "u") || (keyPress === "v") || (keyPress === "w") || (keyPress === "x") || (keyPress === "y") || (keyPress === "z")) {
-
+    //     console.log(guessedLtrs)
 
     // }
+
+
+    // });
 
     //if the letter pressed is NOT in the word, the letter is added to the Guessed List and Guesses Remaining goes down
 
 
-// **Unsure if I need this or not?
-
-    // document.body.innerHTML = document.body.innerHTML.replace("win", "guessLeft", "guessed");
-    // console.log(html) 
-   
-// }
-
-// }
+}
