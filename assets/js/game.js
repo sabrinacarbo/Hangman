@@ -1,113 +1,162 @@
-window.onload = (function(){
+window.onload = (function () {
 
-//variables that will reset per game
-var winCounter = 0;
-var guessCounter = 10;
-var lettersGuessed = 0;
+    //variables that will reset per game
+    var winCounter = 0;
+    var guessCounter = 10;
+    var lettersGuessed = 0;
 
-//Global arrays
-var wordPool = ["Galaxy", "Planet", "Spaceship", "Force", "Lightsaber", "Jedi", "Padawan", "Yoda", "Sith", "Anakin", "Obi-Wan", "Grievous", "Clones", "Trooper", "Galactic", "Empire", "Darth", "Vader", "Death Star", "Stormtrooper", "Rebels", "Alliance", "Luke", "Skywalker", "Princess Leia", "Han Solo", "Millennium", "Falcon", "Wookie", "Chewbacca", "Droid", "TIE Fighter", "Destroyer", "Ewok", "Order", "Resistance"];
-var letterPool = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "_"];
+    //Global arrays
+    var wordPool = ["Galaxy", "Planet", "Spaceship", "Force", "Lightsaber", "Jedi", "Padawan", "Yoda", "Sith", "Anakin", "Obi Wan", "Grievous", "Clones", "Trooper", "Galactic", "Empire", "Darth", "Vader", "Death Star", "Stormtrooper", "Rebels", "Alliance", "Luke", "Skywalker", "Princess Leia", "Han Solo", "Millennium", "Falcon", "Wookie", "Chewbacca", "Droid", "TIE Fighter", "Destroyer", "Ewok", "Order", "Resistance"];
+    
+    // Randomly chooses a choice from the wordPool array. 
+    var wordChoice;
 
-// Randomly chooses a choice from the wordPool array. 
-var wordChoice;
+    //Array to hold the random word generated
+    var answer = [];
 
-//Array to hold the random word generated
-var answer = [];
+    // //Holds letters that have been guessed **** MAY NOT NEED
+    // var lettersGuessedArray = [];
 
-// //Holds letters that have been guessed **** MAY NOT NEED
-// var lettersGuessedArray = [];
+    //Number of letters in current word being guessed
+    var wordSpaces = 0;
 
-//Number of letters in current word being guessed
-var wordSpaces = 0;
+    //Guesses and blank spaces
+    var guessesNBlanks = [];
 
-//Guesses and blank spaces
-var guessesNBlanks = [];
+    //Container for wrong keys guessed
+    var wrongLetterContainer = [];
 
-//Container for wrong keys guessed
-var wrongLetterContainer = [];
-
-//Variable for individual letters guessed by users
-var keyGuesses = "";
-
-
-//=============================== FUNCTIONS ================================
-
-// This function is run whenever the DOM is loaded in the browser 
-
-function gameStart(){
-
-     // Randomly chooses a choice from the wordPool array. 
-    wordChoice = wordPool[Math.floor(Math.random() * wordPool.length)];
-    console.log(wordChoice);
-
-    //Word split up by letters
-    answer = wordChoice.split("");
-
-    console.log(wordChoice);
-
-    //Letter counter
-    wordSpaces = answer.length;
-
-    //Resets each round's guesses
-    guessesNBlanks = [];
-
-    //Resets each round's wrong guesses container
-    wrongLetterContainer = [];
-
-    //Replaces letters within the string to underscores
-    for (var i = 0; i < answer.length; i++) {
-    guessesNBlanks.push = "_ ";
-    }
-    console.log(guessesNBlanks);
-
-    //setting the page html upon game start
-    document.getElementById("currWord").innerHTML = guessesNBlanks.join("");
-    document.getElementById("winCounter").innerHTML = winCounter;
-    document.getElementById("remGuess").innerHTML = guessCounter;
-    document.getElementById("ltrGuess").innerHTML = lettersGuessed.join("");
- 
-}
-//Calls the gameStart function
-gameStart();    
+    //Variable for individual letters guessed by users
+    var keyGuesses = "";
 
 
-//Activates an event listener for when a key is pressed
-document.onkeydown = function (event) {
+    //=============================== FUNCTIONS ================================
 
-    //Determines a key was pressed and the value
-    var keyPress = event.key;
+    // This function is run whenever the DOM is loaded in the browser 
 
-    console.log(keyPress);
+    function gameStart() {
 
-    //if the letter pressed is a-z
-   if (letterPool.indexOf(keyPress) > -1){
+        // Randomly chooses a choice from the wordPool array. 
+        wordChoice = wordPool[Math.floor(Math.random() * wordPool.length)];
+        console.log(wordChoice);
 
-        console.log("Is a letter");
+        //Word split up by letters
+        answer = wordChoice.split("");
 
-        var guessedLtrs = keyPress;  //****** NEED TO FIX
+        console.log(answer);
 
-        //NEED FOR LOOP TO CHECK WORK****
-    for (var l; l < wordChoice.length; l++){
+        //Letter counter
+        wordSpaces = answer.length;
 
-        guessedLtrs[j] = wordChoice.charAt(j);
-        document.getElementById("currWord").replace = wordChoice.indexOf(j);
-    }
-   
-        // .innerHTML = keyPress
+        //Resets each round's guesses
+        guessesNBlanks = [];
 
-    } else {
-        document.getElementById("ltrGuess").appendChild = keyPress;
+        //Resets each round's wrong guesses container
+        wrongLetterContainer = [];
+
+        //Replaces letters within the string to underscores
+        for (var i = 0; i < answer.length; i++) {
+            answer[i] = "_ ";
+        }
+        console.log(guessesNBlanks);
+
+        //setting the page html upon game start
+        document.getElementById("currWord").innerHTML = answer.join(" ");
+        document.getElementById("winCounter").innerHTML = winCounter;
+        document.getElementById("remGuess").innerHTML = guessCounter;
+        document.getElementById("ltrGuess").innerHTML = lettersGuessed;
+
     }
 
-}
+    // Function to compare letters
+    function compareLetters(letter) {
 
-//HOW TO LINK TO AN AUDIO FILE *******
-    //   // Use the following link inside the Audio function below:
-    //   // https://p.scdn.co/mp3-preview/ed5a443bc86176135ebca8a114f66f4d814d4c90
-    //   var audio = new Audio("LINK AN AUDIO FILE HERE");
+        // Is the letter guessed within the word?
+        var letterInGuess = false;
+
+        // Loop to check letter
+        for (var j = 0; j < letterInGuess; j++) {
+
+            if (answer[j] === letter) {
+
+                // If letter guessed is in the word = true
+                letterInGuess = true;
+
+                console.log("Correct letter!")
+            }
+        }
+
+        // CHecking word for letter
+        if (letterInGuess) {
+
+
+            for (var k = 0; k < letterInGuess; k++) {
+
+                //If guessed letter is found in word, replace with letter
+                if (answer[k] === letter) {
+
+                    guessesNBlanks[k] = letter;
+                }
+            }
+
+            console.log(guessesNBlanks);
+        }
+
+        // If the letter doesn't exist at all...
+        else {
+
+            // Move incorrect guess to container
+            wrongLetterContainer.push(letter);
+
+            // Subtract from guess counter
+            guessCounter--;
+
+        }
+
+    }
+
+    // Function once round has been completed
+    function completedRound() {
+
+        // console.log("WinCount: " + winCounter + " | NumGuesses: " + guessCounter);
+
+        // Update the HTML 
+        document.getElementById("remGuess").innerHTML = guessCounter;
+        document.getElementById("currWord").innerHTML = guessesNBlanks.join(" ");
+        document.getElementById("ltrGuess").innerHTML = wrongLetterContainer.join(" ");
+
+        // If the word is guessed correctly, then add a win
+        if (answer.toString() === guessesNBlanks.toString()) {
+
+            winCounter++;
+
+            alert("Winner!!");
+
+            // Update the HTML
+            document.getElementById("winCounter").innerHTML = winCounter;
+
+            // Start the game over
+            startGame();
+        }
+
+    }
+
+
+
+    // MAIN PROCESS (THIS IS THE CODE THAT CONTROLS WHAT IS ACTUALLY RUN)
+    // ==================================================================
+
+    // Starts the game
+    gameStart();
+
+    // Event listener for key presses
+    document.onkeyup = function (event) {
+
+        keyGuesses = String.fromCharCode(event.which).toUpperCase();
+
+        compareLetters(keyGuesses);
+
+        completedRound();
+    };
 
 });
-
-//Somehow use to split words and check for letters
-//var name = array[i].split();
