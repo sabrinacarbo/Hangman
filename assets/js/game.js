@@ -17,8 +17,8 @@ window.onload = (function () {
     // //Holds letters that have been guessed **** MAY NOT NEED
     // var lettersGuessedArray = [];
 
-    //Number of letters in current word being guessed
-    var wordSpaces = 0;
+    //Number of letters in current word being guessed **** MAY NOT NEED
+    // var wordSpaces = 0;
 
     //Guesses and blank spaces
     var guessesNBlanks = [];
@@ -86,7 +86,7 @@ window.onload = (function () {
             }
         }
 
-        // CHecking word for letter
+        // Checking word for letter
         if (letterInGuess) {
 
 
@@ -139,6 +139,10 @@ window.onload = (function () {
             startGame();
         }
 
+        if (guessCounter === 0){
+            completedRound();
+        }
+
     }
 
 
@@ -157,6 +161,10 @@ window.onload = (function () {
         compareLetters(keyGuesses);
 
         completedRound();
+
+        if (guessCounter === 0){
+            completedRound();
+        }
     };
 
 });
